@@ -1,6 +1,6 @@
 package io.input.validator;
 
-import static io.input.validator.InputMenuErrorMessage.INVALID_NUMBER_INPUT;
+import static io.input.validator.InputMenuErrorMessage.*;
 
 public class InputMenuValidator {
 
@@ -8,12 +8,20 @@ public class InputMenuValidator {
     private static final int FOUR = 4;
 
     public static void validate(String inputNumber) {
+        validateNull(inputNumber);
+        validateEmpty(inputNumber);
         validateInvalidNumber(inputNumber);
     }
 
     private static void validateNull(String inputNumber) {
         if (inputNumber == null) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NULL_INPUT.getMessage());
+        }
+    }
+
+    private static void validateEmpty(String inputNumber) {
+        if (inputNumber.isEmpty()) {
+            throw new IllegalArgumentException(EMPTY_INPUT.getMessage());
         }
     }
 
