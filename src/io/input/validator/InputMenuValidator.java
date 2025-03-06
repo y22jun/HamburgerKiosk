@@ -7,7 +7,11 @@ public class InputMenuValidator {
     private static final int ZERO = 0;
     private static final int FOUR = 4;
 
-    private void validateInvalidNumber(int inputNumber) {
+    public static void validate(int inputNumber) {
+        validateInvalidNumber(inputNumber);
+    }
+
+    private static void validateInvalidNumber(int inputNumber) {
         if (inputNumber < ZERO || inputNumber > FOUR) {
             throw new IllegalArgumentException(INVALID_NUMBER_INPUT.getMessage());
         }
