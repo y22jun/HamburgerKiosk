@@ -18,13 +18,13 @@ public class Input {
     }
 
     public static String nextLine() {
+        String inputMenuNumber = getInstance().nextLine();
+        InputMenuValidator.validate(inputMenuNumber);
         return getInstance().nextLine();
     }
 
     public static int nextInt() {
-        int inputMenuNumber = getInstance().nextInt();
-        InputMenuValidator.validate(inputMenuNumber);
-        return inputMenuNumber;
+        return getInstance().nextInt();
     }
 
     public static void close() {
