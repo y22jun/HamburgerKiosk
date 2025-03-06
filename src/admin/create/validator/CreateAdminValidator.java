@@ -1,10 +1,12 @@
 package admin.create.validator;
 
+import admin.create.CreateAdmin;
 import split.Split;
 
 public class CreateAdminValidator {
 
     public static void validateInput(String input) {
+        validateAdminExistence();
         String[] parts = Split.splitInput(input);
 
         validateFormat(parts);
@@ -48,6 +50,12 @@ public class CreateAdminValidator {
         int adminMoney = Integer.parseInt(money);
         if (adminMoney < 0) {
             throw new IllegalArgumentException(CreateAdminErrorMessage.INVALID_MONEY.getMessage());
+        }
+    }
+
+    private static void validateAdminExistence() {
+        if (CreateAdmin.isAdminExists()) {
+            throw new IllegalStateException(CreateAdminErrorMessage.ADMIN_ALREADY_EXISTS.getMessage());
         }
     }
 }
