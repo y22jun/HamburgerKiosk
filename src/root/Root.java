@@ -4,6 +4,8 @@ import admin.create.CreateAdmin;
 
 import java.util.Arrays;
 
+import static root.validator.InputMenuErrorMessage.INVALID_NUMBER_INPUT;
+
 public enum Root {
     EXIT(0, "종료") {
         @Override
@@ -61,6 +63,6 @@ public enum Root {
         return Arrays.stream(values())
                 .filter(menu -> menu.inputMenuNumber == selectNumber)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다: " + selectNumber));
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_NUMBER_INPUT.getMessage()));
     }
 }

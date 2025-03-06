@@ -1,7 +1,5 @@
 package io.input;
 
-import io.input.validator.InputMenuValidator;
-
 import java.util.Scanner;
 
 public class Input {

@@ -10,6 +10,7 @@ public class Kiosk {
         while (true) {
             MenuOutput.outputMenu();
             String inputMenuNumber = Input.nextLine();
+
             Root menu = Root.fromNumber(inputMenuNumber);
             menu.execute();
 
