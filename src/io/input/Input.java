@@ -18,17 +18,7 @@ public class Input {
     }
 
     public static String nextLine() {
-        String inputMenuNumber = getInstance().nextLine();
-        InputMenuValidator.validate(inputMenuNumber);
-        return inputMenuNumber;
-    }
-
-    public static String nextLine2() {
         return getInstance().nextLine();
-    }
-
-    public static int nextInt() {
-        return getInstance().nextInt();
     }
 
     public static void close() {
