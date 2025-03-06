@@ -14,7 +14,6 @@ public class Kiosk {
             menu.execute();
 
             if (menu == Root.EXIT) {
-                System.out.println("키오스크를 종료합니다.");
                 break;
             }
         }
