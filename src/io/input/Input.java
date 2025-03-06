@@ -20,7 +20,7 @@ public class Input {
     public static String nextLine() {
         String inputMenuNumber = getInstance().nextLine();
         InputMenuValidator.validate(inputMenuNumber);
-        return getInstance().nextLine();
+        return inputMenuNumber;
     }
 
     public static int nextInt() {
