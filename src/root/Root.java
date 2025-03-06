@@ -1,5 +1,7 @@
 package root;
 
+import admin.create.CreateAdmin;
+
 import java.util.Arrays;
 
 public enum Root {
@@ -13,7 +15,7 @@ public enum Root {
     CREATE_ADMIN(1, "관리자 생성") {
         @Override
         public void execute() {
-            System.out.println("관리자 생성 실행합니다.");
+            CreateAdmin.createAdmin();
         }
     },
     LOGIN_ADMIN(2, "관리자 접속") {

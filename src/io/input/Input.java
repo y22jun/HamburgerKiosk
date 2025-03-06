@@ -23,6 +23,10 @@ public class Input {
         return inputMenuNumber;
     }
 
+    public static String nextLine2() {
+        return getInstance().nextLine();
+    }
+
     public static int nextInt() {
         return getInstance().nextInt();
     }
