@@ -1,4 +1,4 @@
-import io.Input;
+import io.input.Input;
 
 public class Main {
     public static void main(String[] args) {
