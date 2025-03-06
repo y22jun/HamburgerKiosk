@@ -1,5 +1,7 @@
 package io.input;
 
+import io.input.validator.InputMenuValidator;
+
 import java.util.Scanner;
 
 public class Input {
@@ -20,7 +22,9 @@ public class Input {
     }
 
     public static int nextInt() {
-        return getInstance().nextInt();
+        int inputMenuNumber = getInstance().nextInt();
+        InputMenuValidator.validate(inputMenuNumber);
+        return inputMenuNumber;
     }
 
     public static void close() {
