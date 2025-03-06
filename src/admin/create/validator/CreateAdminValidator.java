@@ -1,6 +1,5 @@
 package admin.create.validator;
 
-import separator.Separator;
 import split.Split;
 
 public class CreateAdminValidator {

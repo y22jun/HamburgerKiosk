@@ -3,7 +3,6 @@ package admin.create;
 import admin.Admin;
 import admin.create.validator.CreateAdminValidator;
 import io.input.Input;
-import separator.Separator;
 import split.Split;
 
 public class CreateAdmin {
@@ -16,10 +15,10 @@ public class CreateAdmin {
             CreateAdminValidator.validateInput(inputCreateAdmin);
 
             String[] parts = Split.splitInput(inputCreateAdmin);
-            String adminName = parts[0].trim();
-            int adminMoney = Integer.parseInt(parts[1].trim());
+            String name = parts[0].trim();
+            int money = Integer.parseInt(parts[1].trim());
 
-            Admin admin = new Admin(adminName, adminMoney);
+            Admin admin = new Admin(name, money);
 
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
