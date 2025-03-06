@@ -4,6 +4,7 @@ import admin.Admin;
 import admin.create.validator.CreateAdminValidator;
 import io.input.Input;
 import separator.Separator;
+import split.Split;
 
 public class CreateAdmin {
 
@@ -14,7 +15,7 @@ public class CreateAdmin {
         try {
             CreateAdminValidator.validateInput(inputCreateAdmin);
 
-            String[] parts = inputCreateAdmin.split(Separator.COMMA);
+            String[] parts = Split.splitInput(inputCreateAdmin);
             String adminName = parts[0].trim();
             int adminMoney = Integer.parseInt(parts[1].trim());
 

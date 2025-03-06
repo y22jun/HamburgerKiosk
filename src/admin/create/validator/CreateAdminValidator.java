@@ -1,11 +1,12 @@
 package admin.create.validator;
 
 import separator.Separator;
+import split.Split;
 
 public class CreateAdminValidator {
 
     public static void validateInput(String input) {
-        String[] parts = input.split(Separator.COMMA);
+        String[] parts = Split.splitInput(input);
 
         validateFormat(parts);
         String name = parts[0].trim();
