@@ -1,5 +1,7 @@
 package root;
 
+import java.util.Arrays;
+
 public enum Root {
     EXIT(0, "종료") {
         @Override
@@ -51,4 +53,12 @@ public enum Root {
     }
 
     public abstract void execute();
+
+    public static Root fromNumber(String inputMenuNumber) {
+        int selectNumber = Integer.parseInt(inputMenuNumber);
+        return Arrays.stream(values())
+                .filter(menu -> menu.inputMenuNumber == selectNumber)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("잘못된 입력입니다: " + selectNumber));
+    }
 }
