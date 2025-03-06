@@ -11,6 +11,12 @@ public class InputMenuValidator {
         validateInvalidNumber(inputNumber);
     }
 
+    private static void validateNull(String inputNumber) {
+        if (inputNumber == null) {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private static void validateInvalidNumber(String inputNumber) {
         int validateNumber = Integer.parseInt(inputNumber);
         if (validateNumber < ZERO || validateNumber > FOUR) {
