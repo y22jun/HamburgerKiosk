@@ -19,6 +19,10 @@ public class Input {
         return getInstance().nextLine();
     }
 
+    public static int nextInt() {
+        return getInstance().nextInt();
+    }
+
     public static void close() {
         if (SCANNER != null) {
             SCANNER.close();
