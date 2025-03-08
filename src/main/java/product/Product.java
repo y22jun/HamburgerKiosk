@@ -38,6 +38,9 @@ public class Product {
 
     @Override
     public String toString() {
+        if (quantity.equals("품절")) {
+            return String.format("- %s, %d원, %s, %s", name, price, quantity, description);
+        }
         return String.format("- %s, %d원, %s개, %s", name, price, quantity, description);
     }
 }
