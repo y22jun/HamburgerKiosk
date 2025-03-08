@@ -2,6 +2,7 @@ package member.create;
 
 import io.input.Input;
 import member.Member;
+import member.create.validator.CreateMemberValidator;
 import split.Split;
 
 public class CreateMember {
@@ -13,12 +14,17 @@ public class CreateMember {
         System.out.println("회원의 정보를 입력해주세요 ex) 1, 30000");
         String inputCreateMember = Input.nextLine();
 
-        String[] parts = Split.splitInput(inputCreateMember);
-        int memberId = Integer.parseInt(parts[0].trim());
-        int memberMoney = Integer.parseInt(parts[1].trim());
+        try {
+            CreateMemberValidator.validateInput(inputCreateMember);
 
-        createMember = new Member(memberId, memberMoney);
-        System.out.println(createMember);
+            String[] parts = Split.splitInput(inputCreateMember);
+            int memberId = Integer.parseInt(parts[0].trim());
+            int memberMoney = Integer.parseInt(parts[1].trim());
+
+            createMember = new Member(memberId, memberMoney);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static Member getMember() {
