@@ -3,7 +3,7 @@ package main.java.admin;
 public class Admin {
 
     private final String adminName;
-    private final int adminMoney;
+    private int adminMoney;
 
     public Admin(String adminName, int adminMoney) {
         this.adminName = adminName;

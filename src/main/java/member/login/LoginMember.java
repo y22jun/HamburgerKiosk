@@ -18,7 +18,7 @@ public class LoginMember {
             Member createMember = CreateMember.getMember();
             System.out.println("로그인 성공! " + createMember.getMemberId() + "님 환영합니다.");
             Order order = new Order();
-            order.printOrder();
+            order.startOrder();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }

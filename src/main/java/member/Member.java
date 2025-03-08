@@ -3,7 +3,7 @@ package main.java.member;
 public class Member {
 
     private final int memberId;
-    private final int money;
+    private int money;
 
     public Member(int memberId, int money) {
         this.memberId = memberId;
