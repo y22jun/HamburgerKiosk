@@ -3,6 +3,7 @@ package root;
 import admin.create.CreateAdmin;
 import admin.login.LoginAdmin;
 import member.create.CreateMember;
+import member.login.LoginMember;
 
 import java.util.Arrays;
 
@@ -37,7 +38,7 @@ public enum Root {
     LOGIN_MEMBER(4, "회원 접속") {
         @Override
         public void execute() {
-            System.out.println("회원 접속을 실행합니다.");
+            LoginMember.loginMember();
         }
     }
     ;
