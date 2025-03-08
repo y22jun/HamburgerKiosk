@@ -2,6 +2,7 @@ package root;
 
 import admin.create.CreateAdmin;
 import admin.login.LoginAdmin;
+import member.create.CreateMember;
 
 import java.util.Arrays;
 
@@ -30,7 +31,7 @@ public enum Root {
     CREATE_MEMBER(3, "회원 생성") {
         @Override
         public void execute() {
-            System.out.println("회원 생성을 시작합니다.");
+            CreateMember.createMember();
         }
     },
     LOGIN_MEMBER(4, "회원 접속") {
