@@ -4,6 +4,7 @@ import main.java.io.input.Input;
 import main.java.member.Member;
 import main.java.member.create.CreateMember;
 import main.java.member.login.validator.LoginMemberValidator;
+import main.java.order.Order;
 
 public class LoginMember {
 
@@ -16,6 +17,8 @@ public class LoginMember {
 
             Member createMember = CreateMember.getMember();
             System.out.println("로그인 성공! " + createMember.getMemberId() + "님 환영합니다.");
+            Order order = new Order();
+            order.printOrder();
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
