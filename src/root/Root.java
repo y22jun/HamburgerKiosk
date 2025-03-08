@@ -1,6 +1,7 @@
 package root;
 
 import admin.create.CreateAdmin;
+import admin.login.LoginAdmin;
 
 import java.util.Arrays;
 
@@ -23,7 +24,7 @@ public enum Root {
     LOGIN_ADMIN(2, "관리자 접속") {
         @Override
         public void execute() {
-            System.out.println("관리자 접속을 실행합니다.");
+            LoginAdmin.loginAdmin();
         }
     },
     CREATE_MEMBER(3, "회원 생성") {
