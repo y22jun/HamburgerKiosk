@@ -14,7 +14,6 @@ public class OrderProcessor {
 
     private static final String ERROR_INVALID_PRODUCT = "[ERROR] 존재하지 않는 상품: ";
     private static final String ERROR_INSUFFICIENT_STOCK = "[ERROR] 재고 부족: ";
-    private static final String ORDER_PROMPT = "구매하실 상품명과 수량을 입력해 주세요. (예: [치킨버거-3],[불고기버거세트-2])";
 
     private final LoadProductsFile loadProductsFile = new LoadProductsFile();
     private final ProductManagement productManagement;
@@ -24,7 +23,7 @@ public class OrderProcessor {
     }
 
     public void processOrder(Member member, Admin admin) {
-        System.out.println(ORDER_PROMPT);
+        System.out.println("구매하실 상품명과 수량을 입력해 주세요. (예: [치킨버거-3],[불고기버거세트-2])");
         String inputOrder = Input.nextLine();
         Map<String, Integer> orderMap = parseOrder(inputOrder);
 
