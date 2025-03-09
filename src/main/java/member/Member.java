@@ -18,4 +18,11 @@ public class Member {
         return money;
     }
 
+    public void decreaseMoney(int amount) {
+        if (money < amount) {
+            throw new IllegalArgumentException("[ERROR] 잔액이 부족합니다.");
+        }
+        money -= amount;
+    }
+
 }
