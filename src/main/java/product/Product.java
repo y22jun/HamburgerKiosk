@@ -1,5 +1,7 @@
 package main.java.product;
 
+import static main.java.product.validator.ProductErrorMessage.OUT_OF_STOCK;
+
 public class Product {
 
     private final String name;
@@ -34,6 +36,13 @@ public class Product {
 
     public String getCategory() {
         return category;
+    }
+
+    public void reduceStock(int amount) {
+        if (quantity < amount) {
+            throw new IllegalArgumentException(OUT_OF_STOCK.getMessage());
+        }
+        quantity -= amount;
     }
 
     @Override
