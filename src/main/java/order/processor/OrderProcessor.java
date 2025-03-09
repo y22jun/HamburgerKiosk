@@ -40,28 +40,65 @@ public class OrderProcessor {
 
         for (String productName : orderMap.keySet()) {
             int quantity = orderMap.get(productName);
-            Product product = productManagement.findProduct(productName);
 
-            if (product == null) {
-                System.out.println(ERROR_INVALID_PRODUCT + productName);
+            if (!processProduct(productName, quantity)) {
                 return 0;
             }
-            if (product.getQuantity() < quantity) {
-                System.out.println(ERROR_INSUFFICIENT_STOCK + productName);
-                return 0;
-            }
-            totalAmount += printOrderSummary(product, quantity);
-            product.reduceStock(quantity);
+
+            totalAmount += calculateProductCost(productName, quantity);
         }
-        loadProductsFile.writeProductsFile(productManagement.getProducts());
+        saveProducts();
         System.out.println("=====================");
         return totalAmount;
     }
 
-    private int printOrderSummary(Product product, int quantity) {
+    private boolean processProduct(String productName, int quantity) {
+        Product product = productManagement.findProduct(productName);
+
+        if (!isValidProduct(product, productName)) {
+            return false;
+        }
+
+        if (!isSufficientStock(product, quantity, productName)) {
+            return false;
+        }
+
+        product.reduceStock(quantity);
+
+        return true;
+    }
+
+    private int calculateProductCost(String productName, int quantity) {
+        Product product = productManagement.findProduct(productName);
+        int cost = product.getPrice() * quantity;
+        printOrderSummary(product, quantity);
+
+        return cost;
+    }
+
+    private boolean isValidProduct(Product product, String productName) {
+        if (product == null) {
+            System.out.println(ERROR_INVALID_PRODUCT + productName);
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isSufficientStock(Product product, int quantity, String productName) {
+        if (product.getQuantity() < quantity) {
+            System.out.println(ERROR_INSUFFICIENT_STOCK + productName);
+            return false;
+        }
+        return true;
+    }
+
+    private void saveProducts() {
+        loadProductsFile.writeProductsFile(productManagement.getProducts());
+    }
+
+    private void printOrderSummary(Product product, int quantity) {
         int cost = product.getPrice() * quantity;
         System.out.println(product.getName() + "\t" + quantity + "\t" + cost);
-        return cost;
     }
 
     private void finalizeOrder(Member member, Admin admin, int totalAmount) {
