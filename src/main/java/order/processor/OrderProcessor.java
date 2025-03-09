@@ -6,6 +6,7 @@ import main.java.io.input.Input;
 import main.java.member.Member;
 import main.java.product.Product;
 import main.java.product.management.ProductManagement;
+import main.java.separator.Separator;
 
 import java.util.*;
 
@@ -76,7 +77,7 @@ public class OrderProcessor {
 
     private Map<String, Integer> parseOrder(String input) {
         Map<String, Integer> orderMap = new HashMap<>();
-        String[] items = input.split(",");
+        String[] items = input.split(Separator.COMMA);
 
         for (String item : items) {
             String[] parts = item.replace("[", "").replace("]", "").trim().split("-");

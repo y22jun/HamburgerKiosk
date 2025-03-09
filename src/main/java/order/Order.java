@@ -6,6 +6,7 @@ import main.java.io.input.Input;
 import main.java.member.Member;
 import main.java.member.create.CreateMember;
 import main.java.order.processor.OrderProcessor;
+import main.java.order.validator.OrderValidator;
 import main.java.product.management.ProductManagement;
 
 public class Order {
@@ -35,6 +36,11 @@ public class Order {
     private boolean askContinueOrder() {
         System.out.println("감사합니다. 구매하고 싶은 다른 상품이 있나요? (Y/N)");
         String choice = Input.nextLine().trim().toUpperCase();
-        return "Y".equals(choice);
+        try {
+            OrderValidator.validateYesOrNo(choice);
+            return "Y".equals(choice);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
