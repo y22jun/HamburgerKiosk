@@ -5,16 +5,18 @@ import main.java.admin.create.CreateAdmin;
 import main.java.io.input.Input;
 import main.java.member.Member;
 import main.java.member.create.CreateMember;
+import main.java.product.management.ProductManagement;
 
 public class Order {
 
+    private final ProductManagement productManagement = new ProductManagement();
     private final Admin createdAdmin = CreateAdmin.getAdmin();
     private final Member createMember = CreateMember.getMember();
 
     public void startOrder() {
         while (true) {
             printWelcomeMessage();
-
+            productManagement.printProducts();
             if (!askContinueOrder()) {
                 break;
             }

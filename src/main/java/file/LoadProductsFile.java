@@ -57,19 +57,15 @@ public class LoadProductsFile {
         return descriptionStr.trim().replaceAll("\"", "");
     }
 
-    public void writeProductsFile() {
+    public void writeProductsFile(List<Product> products) {
         File file = new File(FILE_PATH);
         LoadProductsFileValidator.validate(file);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write("name, price, quantity, description, category\n");
             for (Product product : products) {
-                String line = String.format("%s, %s, \"%s\", %s\n",
-                        product.getName(),
-                        product.getPrice(),
-                        product.getQuantity(),
-                        product.getDescription());
-                writer.write(line + product.getCategory() + "\n");
+                writer.write(product.getName() + "," + product.getPrice() + "," + product.getQuantity() + "," + product.getDescription() + "," + product.getCategory());
+                writer.newLine();
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
