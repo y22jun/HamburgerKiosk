@@ -5,11 +5,13 @@ import main.java.admin.create.CreateAdmin;
 import main.java.io.input.Input;
 import main.java.member.Member;
 import main.java.member.create.CreateMember;
+import main.java.order.processor.OrderProcessor;
 import main.java.product.management.ProductManagement;
 
 public class Order {
 
     private final ProductManagement productManagement = new ProductManagement();
+    private final OrderProcessor orderProcessor = new OrderProcessor(productManagement);
     private final Admin createdAdmin = CreateAdmin.getAdmin();
     private final Member createMember = CreateMember.getMember();
 
@@ -17,6 +19,7 @@ public class Order {
         while (true) {
             printWelcomeMessage();
             productManagement.printProducts();
+            orderProcessor.processOrder(createMember, createdAdmin);
             if (!askContinueOrder()) {
                 break;
             }
