@@ -4,11 +4,11 @@ public class Product {
 
     private final String name;
     private final int price;
-    private String quantity;
+    private int quantity;
     private final String description;
     private final String category;
 
-    public Product(String name, int price, String quantity, String description, String category) {
+    public Product(String name, int price, int quantity, String description, String category) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -24,7 +24,7 @@ public class Product {
         return price;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -38,7 +38,7 @@ public class Product {
 
     @Override
     public String toString() {
-        if (quantity.equals("품절")) {
+        if (quantity == 0) {
             return String.format("- %s, %d원, %s, %s", name, price, quantity, description);
         }
         return String.format("- %s, %d원, %s개, %s", name, price, quantity, description);

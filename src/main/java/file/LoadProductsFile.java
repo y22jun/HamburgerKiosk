@@ -12,7 +12,6 @@ public class LoadProductsFile {
 
     private static final String FILE_PATH = "src/main/resources/products.md";
     private static final String NO_PRODUCT = "재고없음";
-    private static final String SOLD_OUT = "품절";
     private final List<Product> products = new ArrayList<>();
 
     public List<Product> getProducts() {
@@ -40,19 +39,18 @@ public class LoadProductsFile {
     private Product getProduct(String[] parts) {
         String name = parts[0].trim();
         int price = Integer.parseInt(parts[1].trim());
-        String quantity = parts[2].trim();
-        String quantityDisplay = getQuantityDisplay(quantity);
+        int quantity = parseQuantity(parts[2].trim());
         String description = getDescription(parts[3].trim());
         String category = parts[4].trim();
 
-        return new Product(name, price, quantityDisplay, description, category);
+        return new Product(name, price, quantity, description, category);
     }
 
-    private String getQuantityDisplay(String quantity) {
-        if (quantity.equals(NO_PRODUCT)) {
-            return SOLD_OUT;
+    private int parseQuantity(String quantityStr) {
+        if (quantityStr.equals(NO_PRODUCT)) {
+            return 0;
         }
-        return quantity;
+        return Integer.parseInt(quantityStr);
     }
 
     private String getDescription(String descriptionStr) {

@@ -17,4 +17,5 @@ public class Member {
     public int getMoney() {
         return money;
     }
+
 }

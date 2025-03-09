@@ -33,5 +33,6 @@ public class Order {
         System.out.println("구매하실 상품명과 수량을 입력해 주세요. (예: [치킨버거-3],[불고기버거세트-2])");
         String inputOrder = Input.nextLine();
 
+
     }
 }
