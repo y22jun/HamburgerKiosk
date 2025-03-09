@@ -6,14 +6,12 @@ import main.java.io.input.Input;
 import main.java.member.Member;
 import main.java.product.Product;
 import main.java.product.management.ProductManagement;
-import main.java.separator.Separator;
+import main.java.product.validator.ProductValidator;
+import main.java.split.Split;
 
 import java.util.*;
 
 public class OrderProcessor {
-
-    private static final String ERROR_INVALID_PRODUCT = "[ERROR] 존재하지 않는 상품: ";
-    private static final String ERROR_INSUFFICIENT_STOCK = "[ERROR] 재고 부족: ";
 
     private final LoadProductsFile loadProductsFile = new LoadProductsFile();
     private final ProductManagement productManagement;
@@ -47,7 +45,7 @@ public class OrderProcessor {
 
             totalAmount += calculateProductCost(productName, quantity);
         }
-        saveProducts();
+        loadProductsFile.writeProductsFile(productManagement.getProducts());
         System.out.println("=====================");
         return totalAmount;
     }
@@ -55,11 +53,11 @@ public class OrderProcessor {
     private boolean processProduct(String productName, int quantity) {
         Product product = productManagement.findProduct(productName);
 
-        if (!isValidProduct(product, productName)) {
-            return false;
-        }
-
-        if (!isSufficientStock(product, quantity, productName)) {
+        try {
+            ProductValidator.validateProduct(product);
+            ProductValidator.validateStock(product, quantity);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
             return false;
         }
 
@@ -74,26 +72,6 @@ public class OrderProcessor {
         printOrderSummary(product, quantity);
 
         return cost;
-    }
-
-    private boolean isValidProduct(Product product, String productName) {
-        if (product == null) {
-            System.out.println(ERROR_INVALID_PRODUCT + productName);
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isSufficientStock(Product product, int quantity, String productName) {
-        if (product.getQuantity() < quantity) {
-            System.out.println(ERROR_INSUFFICIENT_STOCK + productName);
-            return false;
-        }
-        return true;
-    }
-
-    private void saveProducts() {
-        loadProductsFile.writeProductsFile(productManagement.getProducts());
     }
 
     private void printOrderSummary(Product product, int quantity) {
@@ -113,17 +91,31 @@ public class OrderProcessor {
 
     private Map<String, Integer> parseOrder(String input) {
         Map<String, Integer> orderMap = new HashMap<>();
-        String[] items = input.split(Separator.COMMA);
+        String[] items = Split.splitInput(input);
 
         for (String item : items) {
-            String[] parts = item.replace("[", "").replace("]", "").trim().split("-");
-            if (parts.length != 2) {
-                continue;
-            }
-            orderMap.put(parts[0].trim(), Integer.parseInt(parts[1].trim()));
+            parseItem(item, orderMap);
         }
         return orderMap;
     }
+
+    private void parseItem(String item, Map<String, Integer> orderMap) {
+        String[] parts = extractParts(item);
+
+        if (isValidParts(parts)) {
+            addOrder(orderMap, parts);
+        }
+    }
+
+    private String[] extractParts(String item) {
+        return item.replace("[", "").replace("]", "").trim().split("-");
+    }
+
+    private boolean isValidParts(String[] parts) {
+        return parts.length == 2;
+    }
+
+    private void addOrder(Map<String, Integer> orderMap, String[] parts) {
+        orderMap.put(parts[0].trim(), Integer.parseInt(parts[1].trim()));
+    }
 }
-
-
