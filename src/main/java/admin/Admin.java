@@ -18,4 +18,8 @@ public class Admin {
         return adminMoney;
     }
 
+    public void increaseAdminMoney(int amount) {
+        adminMoney += amount;
+    }
+
 }

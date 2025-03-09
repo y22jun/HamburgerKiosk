@@ -1,5 +1,7 @@
 package main.java.member;
 
+import static main.java.member.validator.MemberErrorMessage.NO_MONEY;
+
 public class Member {
 
     private final int memberId;
@@ -20,7 +22,7 @@ public class Member {
 
     public void decreaseMoney(int amount) {
         if (money < amount) {
-            throw new IllegalArgumentException("[ERROR] 잔액이 부족합니다.");
+            throw new IllegalArgumentException(NO_MONEY.getMessage());
         }
         money -= amount;
     }
