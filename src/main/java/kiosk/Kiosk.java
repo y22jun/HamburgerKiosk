@@ -9,6 +9,11 @@ import main.java.member.login.LoginMember;
 
 public class Kiosk {
 
+    private final CreateAdmin createAdmin = new CreateAdmin();
+    private final LoginAdmin loginAdmin = new LoginAdmin();
+    private final CreateMember createMember = new CreateMember();
+    private final LoginMember loginMember = new LoginMember();
+
     public void startKiosk() {
         try {
             while (true) {
@@ -19,10 +24,10 @@ public class Kiosk {
                     case "0" -> {
                         return;
                     }
-                    case "1" -> CreateAdmin.createAdmin();
-                    case "2" -> LoginAdmin.loginAdmin();
-                    case "3" -> CreateMember.createMember();
-                    case "4" -> LoginMember.loginMember();
+                    case "1" -> createAdmin.createAdmin();
+                    case "2" -> loginAdmin.loginAdmin();
+                    case "3" -> createMember.createMember();
+                    case "4" -> loginMember.loginMember();
                 }
             }
         } catch (IllegalArgumentException e) {

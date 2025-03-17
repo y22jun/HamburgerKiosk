@@ -1,15 +1,19 @@
 package main.java.member;
 
+import main.java.user.domain.User;
+
 import static main.java.member.validator.MemberErrorMessage.NO_MONEY;
 
 public class Member {
 
     private final int memberId;
     private int money;
+    private final User user;
 
-    public Member(int memberId, int money) {
+    public Member(int memberId, int money, User user) {
         this.memberId = memberId;
         this.money = money;
+        this.user = user;
     }
 
     public int getMemberId() {
@@ -18,6 +22,10 @@ public class Member {
 
     public int getMoney() {
         return money;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public void decreaseMoney(int amount) {

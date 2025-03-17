@@ -8,7 +8,7 @@ import main.java.order.Order;
 
 public class LoginMember {
 
-    public static void loginMember() {
+    public void loginMember() {
         System.out.println("회원 아이디를 입력해주세요.");
         String inputLoginMember = Input.nextLine();
 

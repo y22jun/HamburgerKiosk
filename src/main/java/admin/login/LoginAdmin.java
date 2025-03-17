@@ -7,7 +7,7 @@ import main.java.io.input.Input;
 
 public class LoginAdmin {
 
-    public static void loginAdmin() {
+    public void loginAdmin() {
         System.out.println("관리자 이름을 입력해주세요.");
         String inputLoginAdmin = Input.nextLine();
 
