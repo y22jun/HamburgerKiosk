@@ -9,7 +9,6 @@ import main.java.user.domain.User;
 
 public class CreateAdmin {
 
-    private static Admin createAdmin;
     private static boolean adminExists = false;
 
     public AdminInfoDto createAdmin() {
@@ -23,17 +22,12 @@ public class CreateAdmin {
             String name = parts[0].trim();
             int money = Integer.parseInt(parts[1].trim());
 
-//            createAdmin = new Admin(name, money, User.ADMIN);
             adminExists = true;
             return new AdminInfoDto(name, money, User.ADMIN);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return createAdmin();
         }
-    }
-
-    public static Admin getAdmin() {
-        return createAdmin;
     }
 
     public static boolean isAdminExists() {
