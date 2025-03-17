@@ -2,8 +2,8 @@ package main.java.order.processor.validator;
 
 import main.java.separator.Separator;
 
-import static main.java.order.processor.validator.OrderProcessorErrorMessage.EMPTY_INPUT;
-import static main.java.order.processor.validator.OrderProcessorErrorMessage.NULL_INPUT;
+import static main.java.validator.ErrorMessage.EMPTY_INPUT;
+import static main.java.validator.ErrorMessage.NULL_INPUT;
 
 public class OrderProcessorValidator {
 

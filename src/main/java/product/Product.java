@@ -1,6 +1,6 @@
 package main.java.product;
 
-import static main.java.product.validator.ProductErrorMessage.OUT_OF_STOCK;
+import static main.java.validator.ErrorMessage.OUT_OF_STOCK;
 
 public class Product {
 

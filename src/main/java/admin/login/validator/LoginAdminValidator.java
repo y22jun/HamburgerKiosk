@@ -3,6 +3,9 @@ package main.java.admin.login.validator;
 import main.java.admin.Admin;
 import main.java.admin.create.CreateAdmin;
 
+import static main.java.validator.ErrorMessage.ADMIN_NOT_FOUND;
+import static main.java.validator.ErrorMessage.INVALID_ADMIN_NAME;
+
 public class LoginAdminValidator {
 
     public static void validateLogin(String inputAdminName) {
@@ -12,7 +15,7 @@ public class LoginAdminValidator {
 
     private static void validateAdminExistence() {
         if (!CreateAdmin.isAdminExists()) {
-            throw new IllegalArgumentException(LoginAdminErrorMessage.ADMIN_NOT_FOUND.getMessage());
+            throw new IllegalArgumentException(ADMIN_NOT_FOUND.getMessage());
         }
     }
 
@@ -20,7 +23,7 @@ public class LoginAdminValidator {
         Admin createdAdmin = CreateAdmin.getAdmin();
 
         if (!createdAdmin.getAdminName().equals(inputAdminName)) {
-            throw new IllegalArgumentException(LoginAdminErrorMessage.INVALID_ADMIN_NAME.getMessage());
+            throw new IllegalArgumentException(INVALID_ADMIN_NAME.getMessage());
         }
     }
 }

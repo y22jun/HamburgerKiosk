@@ -1,6 +1,7 @@
 package main.java.order.validator;
 
-import static main.java.order.validator.OrderErrorMessage.INVALID_INPUT;
+
+import static main.java.validator.ErrorMessage.INVALID_INPUT;
 
 public class OrderValidator {
 

@@ -3,7 +3,8 @@ package main.java.product.management;
 import main.java.file.LoadProductsFile;
 import main.java.product.Product;
 
-import static main.java.product.validator.ProductErrorMessage.INVALID_PRODUCT;
+import static main.java.validator.ErrorMessage.INVALID_PRODUCT;
+
 
 public class ProductManagement {
 

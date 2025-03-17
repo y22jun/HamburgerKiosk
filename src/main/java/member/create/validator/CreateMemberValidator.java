@@ -2,6 +2,8 @@ package main.java.member.create.validator;
 
 import main.java.split.Split;
 
+import static main.java.validator.ErrorMessage.*;
+
 public class CreateMemberValidator {
 
     public static void validateInput(String input) {
@@ -17,7 +19,7 @@ public class CreateMemberValidator {
 
     private static void validateFormat(String[] parts) {
         if (parts.length != 2) {
-            throw new IllegalArgumentException(CreateMemberErrorMessage.INVALID_FORMAT.getMessage());
+            throw new IllegalArgumentException(INVALID_MEMBER_FORMAT.getMessage());
         }
     }
 
@@ -27,7 +29,7 @@ public class CreateMemberValidator {
 
     private static void validateNameLength(String name) {
         if (name.isEmpty()) {
-            throw new IllegalArgumentException(CreateMemberErrorMessage.INVALID_NAME_LENGTH.getMessage());
+            throw new IllegalArgumentException(INVALID_MEMBER_ID_LENGTH.getMessage());
         }
     }
 
@@ -40,14 +42,14 @@ public class CreateMemberValidator {
         try {
             Integer.parseInt(money);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(CreateMemberErrorMessage.INVALID_MONEY_FORMAT.getMessage());
+            throw new IllegalArgumentException(INVALID_MONEY_FORMAT.getMessage());
         }
     }
 
     private static void validateMoneyNonNegative(String money) {
         int memberMoney = Integer.parseInt(money);
         if (memberMoney < 0) {
-            throw new IllegalArgumentException(CreateMemberErrorMessage.INVALID_MONEY.getMessage());
+            throw new IllegalArgumentException(INVALID_MONEY.getMessage());
         }
     }
 }

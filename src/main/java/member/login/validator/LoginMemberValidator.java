@@ -3,6 +3,9 @@ package main.java.member.login.validator;
 import main.java.member.Member;
 import main.java.member.create.CreateMember;
 
+import static main.java.validator.ErrorMessage.INVALID_MEMBER_NAME;
+import static main.java.validator.ErrorMessage.MEMBER_NOT_FOUND;
+
 public class LoginMemberValidator {
 
     public static void validateLogin(String inputAdminName) {
@@ -12,7 +15,7 @@ public class LoginMemberValidator {
 
     private static void validateMemberExistence() {
         if (CreateMember.getMember() == null) {
-            throw new IllegalArgumentException(LoginMemberErrorMessage.MEMBER_NOT_FOUND.getMessage());
+            throw new IllegalArgumentException(MEMBER_NOT_FOUND.getMessage());
         }
     }
 
@@ -20,7 +23,7 @@ public class LoginMemberValidator {
         Member createMember = CreateMember.getMember();
 
         if (createMember.getMemberId() != Integer.parseInt(inputAdminName)) {
-            throw new IllegalArgumentException(LoginMemberErrorMessage.INVALID_MEMBER_NAME.getMessage());
+            throw new IllegalArgumentException(INVALID_MEMBER_NAME.getMessage());
         }
     }
 }

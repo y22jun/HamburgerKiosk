@@ -3,6 +3,8 @@ package main.java.admin.create.validator;
 import main.java.admin.create.CreateAdmin;
 import main.java.split.Split;
 
+import static main.java.validator.ErrorMessage.*;
+
 public class CreateAdminValidator {
 
     public static void validateInput(String input) {
@@ -19,7 +21,7 @@ public class CreateAdminValidator {
 
     private static void validateFormat(String[] parts) {
         if (parts.length != 2) {
-            throw new IllegalArgumentException(CreateAdminErrorMessage.INVALID_FORMAT.getMessage());
+            throw new IllegalArgumentException(INVALID_ADMIN_FORMAT.getMessage());
         }
     }
 
@@ -29,7 +31,7 @@ public class CreateAdminValidator {
 
     private static void validateNameLength(String name) {
         if (name.isEmpty()) {
-            throw new IllegalArgumentException(CreateAdminErrorMessage.INVALID_NAME_LENGTH.getMessage());
+            throw new IllegalArgumentException(INVALID_ADMIN_NAME_LENGTH.getMessage());
         }
     }
 
@@ -42,20 +44,20 @@ public class CreateAdminValidator {
         try {
             Integer.parseInt(money);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(CreateAdminErrorMessage.INVALID_MONEY_FORMAT.getMessage());
+            throw new IllegalArgumentException(INVALID_MONEY_FORMAT.getMessage());
         }
     }
 
     private static void validateMoneyNonNegative(String money) {
         int adminMoney = Integer.parseInt(money);
         if (adminMoney < 0) {
-            throw new IllegalArgumentException(CreateAdminErrorMessage.INVALID_MONEY.getMessage());
+            throw new IllegalArgumentException(INVALID_MONEY.getMessage());
         }
     }
 
     private static void validateAdminExistence() {
         if (CreateAdmin.isAdminExists()) {
-            throw new IllegalStateException(CreateAdminErrorMessage.ADMIN_ALREADY_EXISTS.getMessage());
+            throw new IllegalStateException(ADMIN_ALREADY_EXISTS.getMessage());
         }
     }
 }

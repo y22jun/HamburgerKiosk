@@ -2,7 +2,8 @@ package main.java.member;
 
 import main.java.user.domain.User;
 
-import static main.java.member.validator.MemberErrorMessage.NO_MONEY;
+import static main.java.validator.ErrorMessage.NO_MONEY;
+
 
 public class Member {
 

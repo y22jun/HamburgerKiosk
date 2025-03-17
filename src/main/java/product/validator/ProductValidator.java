@@ -2,8 +2,8 @@ package main.java.product.validator;
 
 import main.java.product.Product;
 
-import static main.java.product.validator.ProductErrorMessage.INVALID_PRODUCT;
-import static main.java.product.validator.ProductErrorMessage.OUT_OF_STOCK;
+import static main.java.validator.ErrorMessage.INVALID_PRODUCT;
+import static main.java.validator.ErrorMessage.OUT_OF_STOCK;
 
 public class ProductValidator {
 
