@@ -45,7 +45,7 @@ public class OrderProcessor {
 
             totalAmount += calculateProductCost(productName, quantity);
         }
-        loadProductsFile.writeProductsFile(productManagement.getProducts());
+        loadProductsFile.writeProductsFile(loadProductsFile.getProducts());
         System.out.println("=====================");
         return totalAmount;
     }
@@ -119,3 +119,4 @@ public class OrderProcessor {
         orderMap.put(parts[0].trim(), Integer.parseInt(parts[1].trim()));
     }
 }
+

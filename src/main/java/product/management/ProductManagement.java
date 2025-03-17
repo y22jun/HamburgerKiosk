@@ -3,7 +3,7 @@ package main.java.product.management;
 import main.java.file.LoadProductsFile;
 import main.java.product.Product;
 
-import java.util.List;
+import static main.java.product.validator.ProductErrorMessage.INVALID_PRODUCT;
 
 public class ProductManagement {
 
@@ -20,10 +20,7 @@ public class ProductManagement {
         return loadProductsFile.getProducts().stream()
                 .filter(product -> product.getName().equals(name))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_PRODUCT.getMessage()));
     }
 
-    public List<Product> getProducts() {
-        return loadProductsFile.getProducts();
-    }
 }
