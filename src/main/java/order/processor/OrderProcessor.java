@@ -1,11 +1,10 @@
 package main.java.order.processor;
 
 import main.java.admin.Admin;
-import main.java.file.LoadProductsFile;
 import main.java.io.input.Input;
 import main.java.member.Member;
-import main.java.product.Product;
-import main.java.product.management.ProductManagement;
+import main.java.product.domain.Product;
+import main.java.product.service.ProductService;
 import main.java.product.validator.ProductValidator;
 import main.java.split.Split;
 
@@ -13,11 +12,10 @@ import java.util.*;
 
 public class OrderProcessor {
 
-    private final LoadProductsFile loadProductsFile = new LoadProductsFile();
-    private final ProductManagement productManagement;
+    private final ProductService productService;
 
-    public OrderProcessor(ProductManagement productManagement) {
-        this.productManagement = productManagement;
+    public OrderProcessor(ProductService productService) {
+        this.productService = productService;
     }
 
     public void processOrder(Member member, Admin admin) {
@@ -45,13 +43,13 @@ public class OrderProcessor {
 
             totalAmount += calculateProductCost(productName, quantity);
         }
-        loadProductsFile.writeProductsFile(loadProductsFile.getProducts());
+        productService.saveProducts();
         System.out.println("=====================");
         return totalAmount;
     }
 
     private boolean processProduct(String productName, int quantity) {
-        Product product = productManagement.findProduct(productName);
+        Product product = productService.findProduct(productName);
 
         try {
             ProductValidator.validateProduct(product);
@@ -67,7 +65,7 @@ public class OrderProcessor {
     }
 
     private int calculateProductCost(String productName, int quantity) {
-        Product product = productManagement.findProduct(productName);
+        Product product = productService.findProduct(productName);
         int cost = product.getPrice() * quantity;
         printOrderSummary(product, quantity);
 

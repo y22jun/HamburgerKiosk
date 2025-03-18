@@ -34,4 +34,19 @@ public class Product {
     public String getCategory() {
         return category;
     }
+
+    public void reduceStock(int amount) {
+        if (this.quantity < amount) {
+            throw new IllegalArgumentException("재고가 부족합니다.");
+        }
+        this.quantity -= amount;
+    }
+
+    @Override
+    public String toString() {
+        if (quantity == 0) {
+            return String.format("- %s, %d원, %s, %s", name, price, quantity, description);
+        }
+        return String.format("- %s, %d원, %s개, %s", name, price, quantity, description);
+    }
 }

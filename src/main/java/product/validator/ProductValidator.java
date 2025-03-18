@@ -1,6 +1,6 @@
 package main.java.product.validator;
 
-import main.java.product.Product;
+import main.java.product.domain.Product;
 
 import static main.java.validator.ErrorMessage.INVALID_PRODUCT;
 import static main.java.validator.ErrorMessage.OUT_OF_STOCK;

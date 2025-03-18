@@ -8,18 +8,19 @@ import main.java.member.create.CreateMember;
 import main.java.order.processor.OrderProcessor;
 import main.java.order.validator.OrderValidator;
 import main.java.product.management.ProductManagement;
+import main.java.product.service.ProductService;
 
 public class Order {
 
-    private final ProductManagement productManagement = new ProductManagement();
-    private final OrderProcessor orderProcessor = new OrderProcessor(productManagement);
+    private final ProductService productService = new ProductService();
+    private final OrderProcessor orderProcessor = new OrderProcessor(productService);
     private final Admin createdAdmin = CreateAdmin.getAdmin();
     private final Member createMember = CreateMember.getMember();
 
     public void startOrder() {
         while (true) {
             printWelcomeMessage();
-            productManagement.printProducts();
+            productService.printProducts();
             orderProcessor.processOrder(createMember, createdAdmin);
             if (!askContinueOrder()) {
                 break;

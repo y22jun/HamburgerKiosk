@@ -1,7 +1,7 @@
 package main.java.file;
 
 import main.java.file.validator.LoadProductsFileValidator;
-import main.java.product.Product;
+import main.java.product.domain.Product;
 import main.java.separator.Separator;
 
 import java.io.*;
