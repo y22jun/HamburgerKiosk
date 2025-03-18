@@ -31,4 +31,5 @@ public class CreateMember {
     public static Member getMember() {
         return createMember;
     }
+
 }
